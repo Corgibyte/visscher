@@ -1,9 +1,8 @@
 <!-- Log to track hours for Epicodus Capstone requirements -->
 
-**Date,StartTime,EndTime,Task**
+### Research & Planning Log
+#### Friday, 02/18/2022
 
-02/18/22,
-0800,
-0930,
-Researching JavaScript map libraries and their documentation to make a final decision. Final decision: OpenLayers.
-
+* **0800-0930:** Researched JavaScript map libraries and their documentation to make a final decision. Final decision: OpenLayers.
+* **0930-1015:** Read about web scraping ethics in general and Wikipedia's Terms of Use and robots.txt in particular.
+* **1015-1120:** Write capstone-proposal.
