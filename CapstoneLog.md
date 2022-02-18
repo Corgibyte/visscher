@@ -7,3 +7,5 @@
 * **0930-1015:** Read about web scraping ethics in general and Wikipedia's Terms of Use and robots.txt in particular.
 * **1015-1120:** Write capstone-proposal.
 * **1120-1200:** Begin design of API logical structure and endpoints (incomplete).
+* **1300-1330:** Continue designing API logical structure (still incomplete).
+* **1330-1400:** Study C# generics.
