@@ -10,3 +10,4 @@
 * **1300-1330:** Continue designing API logical structure (still incomplete).
 * **1330-1400:** Study C# generics.
 * **1400-1515:** Design model (complete: see [model_design.png](./model_design.png))
+* **1515-16:30:** Reading OpenLayer documentation and working through HelloWorld tutorial.
