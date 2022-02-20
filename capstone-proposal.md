@@ -22,6 +22,7 @@ The goal of Visscher is to visualize history. While studying history I would alw
 ### Technology
 
 The API and client will be completely separate and interact only through API calls and responses.
+
 ________
 
 #### API:
@@ -55,3 +56,9 @@ ________
 ### Additional
 
 I will be scraping Wikipedia for my database using .NET's built-in [HTTP features](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=net-6.0). Web scraping should not be performed haphazardly: rapid and repeated HTTP requests can place tremendous stress on a website and threaten its intended purpose. All of my web scraping will be done in an ethical manner. I have carefully read [Wikipedia's Terms of Use](https://foundation.wikimedia.org/wiki/Terms_of_Use/en#Our_Terms_of_Use) and [robots.txt](https://en.wikipedia.org/robots.txt) and will follow both by properly limiting my requests. I will also clearly document how I am limiting my requests at the time when my scraping module have been designed and built.
+
+### Design Documents
+
+[API design](./design.png).
+
+[Model design](./modeL_design.png)
