@@ -1,6 +1,6 @@
 <!-- Log to track hours for Epicodus Capstone requirements -->
 
-### Research & Planning Log
+### Research, Planning & Work Log
 #### Friday, 02/18/2022
 
 * **0800-0930:** Researched JavaScript map libraries and their documentation to make a final decision. Final decision: OpenLayers.
@@ -11,3 +11,8 @@
 * **1330-1400:** Study C# generics.
 * **1400-1515:** Design model (complete: see [model_design.png](./model_design.png))
 * **1515-16:30:** Reading OpenLayer documentation and working through HelloWorld tutorial.
+
+#### Friday, 02/25/2022
+
+* **0800-0930:** Implement initial model.
+* **0930-1030:** Research ASP.NET Core Singleton Services. Work on implementing HttpService.
