@@ -16,3 +16,4 @@
 
 * **0800-0930:** Implement initial model.
 * **0930-1030:** Research ASP.NET Core Singleton Services. Work on implementing HttpService.
+* **1030-1200:** WIP: implementing HttpService/Parsing pipeline.
