@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System;
+using VisscherApi.Services;
 
 namespace VisscherApi.Models;
 
@@ -25,9 +26,9 @@ public abstract class MappableEvent : IScrapeable
 
   public DateTime LastChecked { get; set; }
 
-  public abstract bool Scrape(string url);
+  public abstract bool Parse(string url);
 
-  public abstract bool Update();
+  public abstract bool Update(HttpService httpService);
 
   public int CategoryId { get; set; }
 

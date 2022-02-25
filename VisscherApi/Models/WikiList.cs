@@ -1,4 +1,5 @@
 using System;
+using VisscherApi.Services;
 
 namespace VisscherApi.Models;
 
@@ -8,7 +9,7 @@ public abstract class WikiList : IScrapeable
   public DateTime LastChecked { get; set; }
   public int CategoryId { get; set; }
 
-  public abstract bool Scrape(string url);
+  public abstract bool Parse(string url);
 
-  public abstract bool Update();
+  public abstract bool Update(HttpService httpService);
 }
