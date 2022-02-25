@@ -18,3 +18,4 @@
 * **0930-1030:** Research ASP.NET Core Singleton Services. Work on implementing HttpService.
 * **1030-1200:** WIP: implementing HttpService/Parsing pipeline.
 * **1300-1400:** Finish implementing HttpService
+* **1400-1545:** WIP implementing Battle.Parse. WIP fixing issues with HttpService/Entity.
