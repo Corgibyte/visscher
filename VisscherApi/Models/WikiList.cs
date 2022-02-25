@@ -8,7 +8,7 @@ public abstract class WikiList : IScrapeable
   public DateTime LastChecked { get; set; }
   public int CategoryId { get; set; }
 
-  public abstract bool Scrape();
+  public abstract bool Scrape(string url);
 
   public abstract bool Update();
 }

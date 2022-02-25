@@ -25,7 +25,7 @@ public abstract class MappableEvent : IScrapeable
 
   public DateTime LastChecked { get; set; }
 
-  public abstract bool Scrape();
+  public abstract bool Scrape(string url);
 
   public abstract bool Update();
 

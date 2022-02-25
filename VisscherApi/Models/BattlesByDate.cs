@@ -6,7 +6,7 @@ public class BattlesByDate : WikiList
 {
   public int BattlesByDateId { get; set; }
 
-  public override bool Scrape()
+  public override bool Scrape(string url)
   {
     //TODO
     return false;
