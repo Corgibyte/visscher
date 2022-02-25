@@ -4,7 +4,9 @@ namespace VisscherApi.Models;
 
 public class VisscherApiContext : DbContext
 {
-  //TODO
+  public DbSet<Battle> Battles { get; set; }
+  public DbSet<Category> Categories { get; set; }
+  public DbSet<BattlesByDate> BattlesByDateList { get; set; }
 
   public VisscherApiContext(DbContextOptions<VisscherApiContext> options) : base(options) { }
 }
