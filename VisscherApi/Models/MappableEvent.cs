@@ -26,7 +26,7 @@ public abstract class MappableEvent : IScrapeable
 
   public DateTime LastChecked { get; set; }
 
-  public abstract bool Parse(string url);
+  public abstract bool Parse(string html, VisscherApiContext db);
 
   public abstract bool Update(HttpService httpService);
 

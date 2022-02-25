@@ -4,7 +4,7 @@ namespace VisscherApi.Models;
 
 public class Battle : MappableEvent
 {
-  public override bool Parse(string url)
+  public override bool Parse(string html, VisscherApiContext db)
   {
     //TODO
     return false;

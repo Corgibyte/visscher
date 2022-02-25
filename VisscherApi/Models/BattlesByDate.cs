@@ -7,7 +7,7 @@ public class BattlesByDate : WikiList
 {
   public int BattlesByDateId { get; set; }
 
-  public override bool Parse(string url)
+  public override bool Parse(string html, VisscherApiContext db)
   {
     //TODO
     return false;
