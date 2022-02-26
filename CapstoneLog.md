@@ -21,3 +21,7 @@
 * **1400-1545:** WIP implementing Battle.Parse. WIP fixing issues with HttpService/Entity.
 * **1545-1615:** Come to crushing realization that HttpService can't work as a singleton with the current architecture. Cry a little.
 * **1615-1715:** Try to re-design architecture. 
+
+#### Saturday, 02/26/2022
+
+* **14:30-15:00:** Fix Entity/HttpService issue with a single line of code. 
