@@ -37,6 +37,7 @@ public class HttpService
       IScrapeable thisScrapeable = _queue.Dequeue();
       string htmlResponse = await _client.GetStringAsync(thisScrapeable.Url);
       thisScrapeable.Parse(htmlResponse, _db);
+      _db.ChangeTracker.Clear();
     }
   }
 
