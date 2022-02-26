@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using VisscherApi.Models;
 using VisscherApi.Services;
 using System;
+using Serilog;
 
 namespace VisscherApi;
 
@@ -46,7 +47,7 @@ public class Startup
     }
 
     // app.UseHttpsRedirection();
-
+    app.UseSerilogRequestLogging();
     app.UseRouting();
 
     app.UseAuthorization();
