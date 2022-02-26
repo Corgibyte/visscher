@@ -24,4 +24,5 @@
 
 #### Saturday, 02/26/2022
 
-* **14:30-15:00:** Fix Entity/HttpService issue with a single line of code. 
+* **14:30-15:00:** Fix Entity/HttpService issue with a single line of code.
+* **15:00-15:45:** Follow Serilog documentation to install and configure for logging 
