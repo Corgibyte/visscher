@@ -9,4 +9,15 @@ public class VisscherApiContext : DbContext
   public DbSet<BattlesByDate> BattlesByDateList { get; set; }
 
   public VisscherApiContext(DbContextOptions<VisscherApiContext> options) : base(options) { }
+
+  protected override void OnModelCreating(ModelBuilder builder)
+  {
+    builder.Entity<Category>()
+      .HasData(
+        new Category
+        {
+          CategoryId = 1
+        }
+      );
+  }
 }

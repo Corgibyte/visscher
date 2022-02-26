@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VisscherApi.Models;
 
@@ -10,9 +11,10 @@ using VisscherApi.Models;
 namespace VisscherApi.Migrations
 {
     [DbContext(typeof(VisscherApiContext))]
-    partial class VisscherApiContextModelSnapshot : ModelSnapshot
+    [Migration("20220225224901_RemoveDescription")]
+    partial class RemoveDescription
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,12 +50,6 @@ namespace VisscherApi.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            CategoryId = 1
-                        });
                 });
 
             modelBuilder.Entity("VisscherApi.Models.MappableEvent", b =>
@@ -64,6 +60,9 @@ namespace VisscherApi.Migrations
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
@@ -84,9 +83,6 @@ namespace VisscherApi.Migrations
 
                     b.Property<string>("Url")
                         .HasColumnType("longtext");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
 
                     b.HasKey("EventId");
 
