@@ -11,8 +11,8 @@ using VisscherApi.Models;
 namespace VisscherApi.Migrations
 {
     [DbContext(typeof(VisscherApiContext))]
-    [Migration("20220225225056_ChangeDate")]
-    partial class ChangeDate
+    [Migration("20220227040136_Reinitialize")]
+    partial class Reinitialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,6 +50,12 @@ namespace VisscherApi.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1
+                        });
                 });
 
             modelBuilder.Entity("VisscherApi.Models.MappableEvent", b =>
@@ -58,7 +64,7 @@ namespace VisscherApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Discriminator")
@@ -102,11 +108,11 @@ namespace VisscherApi.Migrations
 
             modelBuilder.Entity("VisscherApi.Models.MappableEvent", b =>
                 {
-                    b.HasOne("VisscherApi.Models.Category", null)
+                    b.HasOne("VisscherApi.Models.Category", "Category")
                         .WithMany("Events")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("VisscherApi.Models.Category", b =>

@@ -11,8 +11,8 @@ using VisscherApi.Models;
 namespace VisscherApi.Migrations
 {
     [DbContext(typeof(VisscherApiContext))]
-    [Migration("20220225231531_AddSeeding")]
-    partial class AddSeeding
+    [Migration("20220227040307_AddCategoryId")]
+    partial class AddCategoryId
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -104,15 +104,30 @@ namespace VisscherApi.Migrations
                     b.HasBaseType("VisscherApi.Models.MappableEvent");
 
                     b.HasDiscriminator().HasValue("Battle");
+
+                    b.HasData(
+                        new
+                        {
+                            EventId = 1,
+                            CategoryId = 1,
+                            LastChecked = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Latitude = 0f,
+                            Longitude = 0f,
+                            Name = "Battle of Ad Decimum",
+                            Url = "https://en.wikipedia.org/wiki/Battle_of_Ad_Decimum",
+                            Year = 0
+                        });
                 });
 
             modelBuilder.Entity("VisscherApi.Models.MappableEvent", b =>
                 {
-                    b.HasOne("VisscherApi.Models.Category", null)
+                    b.HasOne("VisscherApi.Models.Category", "Category")
                         .WithMany("Events")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("VisscherApi.Models.Category", b =>

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VisscherApi.Migrations
 {
-    public partial class InitialModel : Migration
+    public partial class Reinitialize : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -53,13 +53,11 @@ namespace VisscherApi.Migrations
                     Longitude = table.Column<float>(type: "float", nullable: false),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Description = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Date = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Year = table.Column<int>(type: "int", nullable: false),
                     Url = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     LastChecked = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: true),
                     Discriminator = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
@@ -70,10 +68,14 @@ namespace VisscherApi.Migrations
                         name: "FK_MappableEvent_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
-                        principalColumn: "CategoryId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "CategoryId");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                column: "CategoryId",
+                value: 1);
 
             migrationBuilder.CreateIndex(
                 name: "IX_MappableEvent_CategoryId",
