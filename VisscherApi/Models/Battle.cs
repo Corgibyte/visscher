@@ -51,7 +51,7 @@ public class Battle : MappableEvent
 
   public override bool NeedsUpdate()
   {
-    //TODO
-    return false;
+    TimeSpan timeSinceUpdate = DateTime.Now - LastChecked;
+    return timeSinceUpdate.Days > 3;
   }
 }
