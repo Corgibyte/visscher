@@ -27,4 +27,6 @@
 * **14:30-15:00:** Fix Entity/HttpService issue with a single line of code.
 * **15:00-15:45:** Follow Serilog documentation to install and configure for logging.
 * **15:45-17:00:** Implement logging of parsing and test with seeded database data.
-* **19:45-20:00:** Fix database seeding issues. 
+* **19:45-20:00:** Fix database seeding issues.
+* **20:00-21:30:** Implement AlphabeticalBattle.Parse.
+* **21:30-22:00:** Troubleshoot parsing/populating database.
