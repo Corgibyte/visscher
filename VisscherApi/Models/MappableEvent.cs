@@ -46,8 +46,12 @@ public abstract class MappableEvent : IScrapeable
   {
     string[] workingArray = latOrLong.Split('°');
     float degrees = float.Parse(workingArray[0]);
-    workingArray = workingArray[1].Split('′');
-    float minutes = float.Parse(workingArray[0]);
+    float minutes = 0;
+    if (workingArray[1].Contains("′"))
+    {
+      workingArray = workingArray[1].Split('′');
+      float.Parse(workingArray[0]);
+    }
     float seconds = 0;
     if (workingArray[1].Contains("″"))
     {
@@ -64,8 +68,12 @@ public abstract class MappableEvent : IScrapeable
     foreach (string word in words)
     {
       int year;
-      if (word.Length >= 3 && int.TryParse(word, out year))
+      if (word.Length >= 3 && int.TryParse(word, out year) || (word.Length > 4 && int.TryParse(word.Substring(0, 4), out year)))
       {
+        if (date.Contains(" BC"))
+        {
+          year *= -1;
+        }
         return new ParseResult { Result = true, Message = year.ToString() };
       }
     }

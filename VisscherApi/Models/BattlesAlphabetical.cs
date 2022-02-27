@@ -18,6 +18,7 @@ public class BattlesAlphabetical : WikiList
     nodes = nodes.Where(node => !node.GetAttributeValue("id", "").Contains("footer"));
     nodes = nodes.Where(node => !node.GetAttributeValue("class", "").Contains("mw-list-item"));
     nodes = nodes.Where(node => !node.FirstChild.GetAttributeValue("href", "").Contains("/wiki/Category"));
+    nodes = nodes.Where(node => !node.FirstChild.GetAttributeValue("href", "").Contains("/wiki/Category"));
     nodes = nodes.Where(node => !node.FirstChild.GetAttributeValue("href", "").Contains("#"));
     foreach (HtmlNode node in nodes)
     {

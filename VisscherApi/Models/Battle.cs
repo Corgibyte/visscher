@@ -12,52 +12,57 @@ public class Battle : MappableEvent
   {
     HtmlDocument htmlDoc = new HtmlDocument();
     htmlDoc.LoadHtml(html);
-    if (htmlDoc.DocumentNode != null)
+    string name = htmlDoc.DocumentNode.Descendants()
+      .Where(node => node.GetAttributeValue("class", "").Contains("firstHeading"))
+      .FirstOrDefault()
+      .InnerText;
+    HtmlNode workingNode = htmlDoc.DocumentNode.Descendants()
+      .Where(node => node.GetAttributeValue("class", "").Contains("latitude"))
+      .FirstOrDefault();
+    if (workingNode == null)
     {
-      string latitude = htmlDoc.DocumentNode.Descendants()
-        .Where(node => node.GetAttributeValue("class", "").Contains("latitude"))
-        .FirstOrDefault()
-        .InnerText;
-      string longitude = htmlDoc.DocumentNode.Descendants()
-        .Where(node => node.GetAttributeValue("class", "").Contains("longitude"))
-        .FirstOrDefault()
-        .InnerText;
-      string name = htmlDoc.DocumentNode.Descendants()
-        .Where(node => node.GetAttributeValue("class", "").Contains("firstHeading"))
-        .FirstOrDefault()
-        .InnerText;
-      ParseResult dateParse = ParseDateForYear(htmlDoc.DocumentNode.Descendants("tr")
-        .Where(node => node.FirstChild.InnerText == "Date")
-        .FirstOrDefault().Descendants("td")
-        .FirstOrDefault().InnerText);
-      int year = -1;
-      if (dateParse.Result)
-      {
-        year = int.Parse(dateParse.Message);
-      }
-      //* Only save entity to database if it has found a lat, long, and year
-      if (latitude != "" && longitude != "" && name != "" && year != -1)
-      {
-        Battle newBattle = new Battle()
-        {
-          Latitude = ParseLatOrLongString(latitude),
-          Longitude = ParseLatOrLongString(longitude),
-          Name = name,
-          Year = year,
-          CategoryId = CategoryId,
-          Url = Url,
-          LastChecked = DateTime.Now,
-          EventId = EventId
-        };
-        db.Entry(newBattle).State = EntityState.Modified;
-        db.SaveChanges();
-        return new ParseResult { Result = true, Message = $"{name} parsed" };
-      }
-      return new ParseResult { Result = false, Message = $"Unable to parse {name}. Lat: {latitude}. Long: {longitude}. Date: {dateParse.Message}." };
+      return new ParseResult { Result = false, Message = $"Unable to parse {name}: no latitude found" };
     }
-    else
+    string latitude = workingNode.InnerText;
+    workingNode = htmlDoc.DocumentNode.Descendants()
+      .Where(node => node.GetAttributeValue("class", "").Contains("longitude"))
+      .FirstOrDefault();
+    if (workingNode == null)
     {
-      return new ParseResult { Result = false, Message = $"Unable to parse {html}" };
+      return new ParseResult { Result = false, Message = $"Unable to parse {name}: no longitude found" };
     }
+    string longitude = workingNode.InnerText;
+    workingNode = htmlDoc.DocumentNode.Descendants("tr")
+      .Where(node => node.FirstChild.InnerText == "Date")
+      .FirstOrDefault();
+    if (workingNode == null)
+    {
+      return new ParseResult { Result = false, Message = $"Unable to parse {name}: no date found" };
+    }
+    ParseResult dateParse = ParseDateForYear(workingNode.Descendants("td").FirstOrDefault().InnerText);
+    int year = -1;
+    if (dateParse.Result)
+    {
+      year = int.Parse(dateParse.Message);
+    }
+    //* Only save entity to database if it has found a lat, long, and year
+    if (latitude != "" && longitude != "" && name != "" && year != -1)
+    {
+      Battle newBattle = new Battle()
+      {
+        Latitude = ParseLatOrLongString(latitude),
+        Longitude = ParseLatOrLongString(longitude),
+        Name = name,
+        Year = year,
+        CategoryId = CategoryId,
+        Url = Url,
+        LastChecked = DateTime.Now,
+        EventId = EventId
+      };
+      db.Entry(newBattle).State = EntityState.Modified;
+      db.SaveChanges();
+      return new ParseResult { Result = true, Message = $"{name} parsed" };
+    }
+    return new ParseResult { Result = false, Message = $"Unable to parse {name}. Lat: {latitude}. Long: {longitude}. Date: {dateParse.Message}." };
   }
 }
