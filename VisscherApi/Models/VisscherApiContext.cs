@@ -8,6 +8,7 @@ public class VisscherApiContext : DbContext
   public DbSet<Battle> Battles { get; set; }
   public DbSet<Category> Categories { get; set; }
   public DbSet<BattlesByDate> BattlesByDateList { get; set; }
+  public DbSet<BattlesAlphabetical> BattlesAlphabetical { get; set; }
 
   public VisscherApiContext(DbContextOptions<VisscherApiContext> options) : base(options) { }
 
@@ -31,6 +32,16 @@ public class VisscherApiContext : DbContext
           LastChecked = DateTime.MinValue,
           Latitude = 0,
           Longitude = 0
+        }
+      );
+    builder.Entity<BattlesAlphabetical>()
+      .HasData(
+        new BattlesAlphabetical
+        {
+          WikiListId = 1,
+          CategoryId = 1,
+          Url = "https://en.wikipedia.org/wiki/List_of_battles_(alphabetical)",
+          LastChecked = DateTime.MinValue
         }
       );
   }
