@@ -33,4 +33,6 @@
 
 #### Sunday, 02/27/2022
 
-* **05:30-06:30:** Continue (complete?) troubleshoot parsing/populating Battle database table.
+* **05:30-06:15:** Continue to troubleshoot parsing/populating Battle database table. Complete?
+* **06:15-06:30:** Continue to troubleshoot parsing/populating Battle database table. Sure this one will work!
+* **06:30-07:00:** Continue to troubleshoot parsing/populating Battle database table. There's no way this doesn't work.
