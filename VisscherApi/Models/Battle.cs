@@ -8,7 +8,7 @@ namespace VisscherApi.Models;
 
 public class Battle : MappableEvent
 {
-  public override bool Parse(string html, VisscherApiContext db)
+  public override ParseResult Parse(string html, VisscherApiContext db)
   {
     HtmlDocument htmlDoc = new HtmlDocument();
     htmlDoc.LoadHtml(html);
@@ -44,9 +44,9 @@ public class Battle : MappableEvent
       };
       db.Entry(newBattle).State = EntityState.Modified;
       db.SaveChanges();
-      return true;
+      return new ParseResult { Result = true, Message = $"{name} parsed" };
     }
-    return false;
+    return new ParseResult { Result = false, Message = $"Unable to parse {name}. Lat: {latitude}. Long: {longitude}. Year: {year}." };
   }
 
   public override bool Update(HttpService httpService)

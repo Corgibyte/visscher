@@ -9,7 +9,7 @@ public abstract class WikiList : IScrapeable
   public DateTime LastChecked { get; set; }
   public int CategoryId { get; set; }
 
-  public abstract bool Parse(string html, VisscherApiContext db);
+  public abstract ParseResult Parse(string html, VisscherApiContext db);
 
   public abstract bool Update(HttpService httpService);
 }

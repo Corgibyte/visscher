@@ -8,7 +8,7 @@ public interface IScrapeable
   public string Url { get; set; }
   public DateTime LastChecked { get; set; }
 
-  public bool Parse(string html, VisscherApiContext db);
+  public ParseResult Parse(string html, VisscherApiContext db);
 
   public bool Update(HttpService httpService);
 }
