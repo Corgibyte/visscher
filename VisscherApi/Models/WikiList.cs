@@ -11,5 +11,9 @@ public abstract class WikiList : IScrapeable
 
   public abstract ParseResult Parse(string html, VisscherApiContext db);
 
-  public abstract bool NeedsUpdate();
+  public bool NeedsUpdate()
+  {
+    TimeSpan timeSinceUpdate = DateTime.Now - LastChecked;
+    return timeSinceUpdate.Days > 3;
+  }
 }

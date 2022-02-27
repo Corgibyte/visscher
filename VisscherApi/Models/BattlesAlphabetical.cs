@@ -1,10 +1,8 @@
-using VisscherApi.Services;
-
 namespace VisscherApi.Models;
 
-public class BattlesByDate : WikiList
+public class BattlesAlphabetical : WikiList
 {
-  public int BattlesByDateId { get; set; }
+  public int BattlesAlphabeticalId { get; set; }
 
   public override ParseResult Parse(string html, VisscherApiContext db)
   {

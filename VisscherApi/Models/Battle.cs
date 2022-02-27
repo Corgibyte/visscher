@@ -48,10 +48,4 @@ public class Battle : MappableEvent
     }
     return new ParseResult { Result = false, Message = $"Unable to parse {name}. Lat: {latitude}. Long: {longitude}. Year: {year}." };
   }
-
-  public override bool NeedsUpdate()
-  {
-    TimeSpan timeSinceUpdate = DateTime.Now - LastChecked;
-    return timeSinceUpdate.Days > 3;
-  }
 }
