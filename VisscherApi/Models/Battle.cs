@@ -24,10 +24,15 @@ public class Battle : MappableEvent
       .Where(node => node.GetAttributeValue("class", "").Contains("firstHeading"))
       .FirstOrDefault()
       .InnerText;
-    int year = ParseDateForYear(htmlDoc.DocumentNode.Descendants("tr")
+    ParseResult dateParse = ParseDateForYear(htmlDoc.DocumentNode.Descendants("tr")
       .Where(node => node.FirstChild.InnerText == "Date")
       .FirstOrDefault().Descendants("td")
       .FirstOrDefault().InnerText);
+    int year = -1;
+    if (dateParse.Result)
+    {
+      year = int.Parse(dateParse.Message);
+    }
     //* Only save entity to database if it has found a lat, long, and year
     if (latitude != "" && longitude != "" && name != "" && year != -1)
     {
@@ -46,6 +51,6 @@ public class Battle : MappableEvent
       db.SaveChanges();
       return new ParseResult { Result = true, Message = $"{name} parsed" };
     }
-    return new ParseResult { Result = false, Message = $"Unable to parse {name}. Lat: {latitude}. Long: {longitude}. Year: {year}." };
+    return new ParseResult { Result = false, Message = $"Unable to parse {name}. Lat: {latitude}. Long: {longitude}. Date: {dateParse.Message}." };
   }
 }

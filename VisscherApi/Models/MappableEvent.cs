@@ -48,13 +48,17 @@ public abstract class MappableEvent : IScrapeable
     float degrees = float.Parse(workingArray[0]);
     workingArray = workingArray[1].Split('′');
     float minutes = float.Parse(workingArray[0]);
-    workingArray = workingArray[1].Split('″');
-    float seconds = float.Parse(workingArray[0]);
+    float seconds = 0;
+    if (workingArray[1].Contains("″"))
+    {
+      workingArray = workingArray[1].Split('″');
+      seconds = float.Parse(workingArray[0]);
+    }
     float value = degrees + (minutes / 60) + (seconds / 3600);
     return workingArray[1] == "N" || workingArray[1] == "W" ? value : value * -1;
   }
 
-  public int ParseDateForYear(string date)
+  public ParseResult ParseDateForYear(string date)
   {
     string[] words = date.Split(" ");
     foreach (string word in words)
@@ -62,9 +66,9 @@ public abstract class MappableEvent : IScrapeable
       int year;
       if (word.Length >= 3 && int.TryParse(word, out year))
       {
-        return year;
+        return new ParseResult { Result = true, Message = year.ToString() };
       }
     }
-    return -1;
+    return new ParseResult { Result = false, Message = date };
   }
 }
