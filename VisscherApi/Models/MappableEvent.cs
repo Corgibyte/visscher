@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System;
-using VisscherApi.Services;
+using Newtonsoft.Json;
+
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VisscherApi.Models;
@@ -24,8 +25,10 @@ public abstract class MappableEvent : IScrapeable
 
   public DateTime LastChecked { get; set; }
 
+  [JsonIgnore]
   [ForeignKey("Categories")]
   public int CategoryId { get; set; }
+  [JsonIgnore]
   public virtual Category Category { get; set; }
 
   [Key]
