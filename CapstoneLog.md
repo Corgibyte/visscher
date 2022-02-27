@@ -29,4 +29,8 @@
 * **15:45-17:00:** Implement logging of parsing and test with seeded database data.
 * **19:45-20:00:** Fix database seeding issues.
 * **20:00-21:30:** Implement AlphabeticalBattle.Parse.
-* **21:30-22:00:** Troubleshoot parsing/populating database.
+* **21:30-22:00:** Troubleshoot parsing/populating Battle database table.
+
+#### Sunday, 02/27/2022
+
+* **05:30-06:30:** Continue (complete?) troubleshoot parsing/populating Battle database table.
