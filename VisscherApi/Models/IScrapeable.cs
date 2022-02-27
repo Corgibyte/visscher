@@ -10,5 +10,5 @@ public interface IScrapeable
 
   public ParseResult Parse(string html, VisscherApiContext db);
 
-  public bool Update(HttpService httpService);
+  public bool NeedsUpdate();
 }

@@ -11,5 +11,5 @@ public abstract class WikiList : IScrapeable
 
   public abstract ParseResult Parse(string html, VisscherApiContext db);
 
-  public abstract bool Update(HttpService httpService);
+  public abstract bool NeedsUpdate();
 }

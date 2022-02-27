@@ -12,7 +12,7 @@ public class BattlesByDate : WikiList
     return new ParseResult { Result = false, Message = "TODO" };
   }
 
-  public override bool Update(HttpService httpService)
+  public override bool NeedsUpdate()
   {
     //TODO
     return false;

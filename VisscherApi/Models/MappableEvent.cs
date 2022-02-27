@@ -33,7 +33,7 @@ public abstract class MappableEvent : IScrapeable
 
   public abstract ParseResult Parse(string html, VisscherApiContext db);
 
-  public abstract bool Update(HttpService httpService);
+  public abstract bool NeedsUpdate();
 
   public float ParseLatOrLongString(string latOrLong)
   {
