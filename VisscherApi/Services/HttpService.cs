@@ -56,4 +56,9 @@ public class HttpService
   {
     _queue.Enqueue(scrapeable);
   }
+
+  public bool QueueContains(IScrapeable scrapeable)
+  {
+    return _queue.Contains(scrapeable);
+  }
 }
