@@ -1,12 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using System;
+using System.Net;
+using System.Linq;
 using VisscherApi.Models;
 using VisscherApi.Services;
-using System;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
 
 namespace VisscherApi.Controllers;
 
@@ -37,7 +40,12 @@ public class BattlesController : ControllerBase
       endYear = endYear == 9999 ? endYear = 2030 : endYear;
       battles = battles.Where(battle => battle.Year >= startYear && battle.Year <= endYear);
     }
-    return new JsonResult(battles);
+    return new ContentResult()
+    {
+      StatusCode = (int)HttpStatusCode.OK,
+      ContentType = "applications/json",
+      Content = JsonConvert.SerializeObject(battles, new BattleJsonConverter())
+    };
   }
 
   [HttpPost("update")]
