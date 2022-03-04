@@ -37,3 +37,7 @@
 * **06:15-06:30:** Continue to troubleshoot parsing/populating Battle database table. This one will work!
 * **06:30-07:00:** Continue to troubleshoot parsing/populating Battle database table. There's no way this doesn't work!
 * **07:00-08:00:** Implement basic BattlesController. **Milestone: Backend MVP done!**
+
+#### Friday, 03/04/2022
+
+* **10:00-12:00:** Read GeoJSON spec. Work on custom JSON converter to convert class correctly.
