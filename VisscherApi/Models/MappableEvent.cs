@@ -44,14 +44,13 @@ public abstract class MappableEvent : IScrapeable
 
   public float ParseLatOrLongString(string latOrLong)
   {
-    Console.WriteLine(latOrLong);
     string[] workingArray = latOrLong.Split('°');
     float degrees = float.Parse(workingArray[0]);
     float minutes = 0;
     if (workingArray[1].Contains("′"))
     {
       workingArray = workingArray[1].Split('′');
-      float.Parse(workingArray[0]);
+      minutes = float.Parse(workingArray[0]);
     }
     float seconds = 0;
     if (workingArray[1].Contains("″"))
