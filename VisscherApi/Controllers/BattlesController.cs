@@ -49,22 +49,30 @@ public class BattlesController : ControllerBase
   }
 
   [HttpPost("update")]
-  public async Task<ActionResult> Update()
+  public async Task<ActionResult> Update(int id = 0)
   {
-    BattlesAlphabetical list = await _db.BattlesAlphabetical.FirstOrDefaultAsync(list => list.WikiListId == 1);
-    _httpService.AddToQueue(list);
-    bool inList = _httpService.QueueContains(list);
-    while (inList)
+    if (id == 0)
     {
-      Thread.Sleep(1000);
-      inList = _httpService.QueueContains(list);
-    }
-    foreach (Battle battle in _db.Battles)
-    {
-      if (battle.NeedsUpdate())
+      BattlesAlphabetical list = await _db.BattlesAlphabetical.FirstOrDefaultAsync(list => list.WikiListId == 1);
+      _httpService.AddToQueue(list);
+      bool inList = _httpService.QueueContains(list);
+      while (inList)
       {
-        _httpService.AddToQueue(battle);
+        Thread.Sleep(1000);
+        inList = _httpService.QueueContains(list);
       }
+      foreach (Battle battle in _db.Battles)
+      {
+        if (battle.NeedsUpdate())
+        {
+          _httpService.AddToQueue(battle);
+        }
+      }
+    }
+    else
+    {
+      Battle selectedBattle = _db.Battles.FirstOrDefault(battle => battle.EventId == id);
+      _httpService.AddToQueue(selectedBattle);
     }
     return Ok();
   }
