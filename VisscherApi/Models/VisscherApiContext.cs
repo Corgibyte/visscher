@@ -21,19 +21,6 @@ public class VisscherApiContext : DbContext
           CategoryId = 1
         }
       );
-    builder.Entity<Battle>()
-      .HasData(
-        new Battle
-        {
-          EventId = 1,
-          CategoryId = 1,
-          Name = "Battle of Ad Decimum",
-          Url = "https://en.wikipedia.org/wiki/Battle_of_Ad_Decimum",
-          LastChecked = DateTime.MinValue,
-          Latitude = 0,
-          Longitude = 0
-        }
-      );
     builder.Entity<BattlesAlphabetical>()
       .HasData(
         new BattlesAlphabetical
