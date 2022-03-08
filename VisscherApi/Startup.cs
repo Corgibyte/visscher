@@ -36,6 +36,15 @@ public class Startup
       c.SwaggerDoc("v1", new OpenApiInfo { Title = "Visscher API", Version = "v1" });
     });
     services.AddSingleton<HttpService>();
+    services.AddCors(options =>
+    {
+      options.AddPolicy("CorsPolicy",
+        builder => builder
+          .AllowAnyMethod()
+          .AllowCredentials()
+          .SetIsOriginAllowed((host) => true)
+          .AllowAnyHeader());
+    });
   }
 
   // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +59,7 @@ public class Startup
     app.UseSerilogRequestLogging();
     app.UseRouting();
 
+    app.UseCors("CorsPolicy");
     app.UseAuthorization();
 
     app.UseEndpoints(endpoints =>
@@ -62,6 +72,5 @@ public class Startup
     {
       c.SwaggerEndpoint("v1/swagger.json", "Visscher API V1");
     });
-
   }
 }
