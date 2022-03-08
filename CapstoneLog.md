@@ -43,3 +43,10 @@
 * **10:00-12:00:** Read GeoJSON spec. Work on custom JSON converter to convert class correctly.
 * **13:00-14:00:** Finish implementing custom JSON converter to conform to GeoJSON.
 * **14:00-15:30:** Create React app and begin trying to implement OpenLayers.
+
+#### Monday, 03/07/2022
+* **14:45-15:45:** Finish implementing React and OpenLayers.
+
+#### Tuesday, 03/08/2022
+* **08:00-08:30:** Implement API call into React.
+* **08:30-09:45:** Work on implementing API data into OpenLayers.
