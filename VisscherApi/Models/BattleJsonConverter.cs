@@ -25,7 +25,7 @@ public class BattleJsonConverter : JsonConverter<Battle>
     {
       JObject o = (JObject)token;
       o.AddFirst(new JProperty("coordinates", new[] { battle.Longitude, battle.Latitude }));
-      o.AddFirst(new JProperty("type", "point"));
+      o.AddFirst(new JProperty("type", "Point"));
       o.WriteTo(writer);
     }
   }
