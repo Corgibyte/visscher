@@ -51,3 +51,4 @@
 * **08:00-08:30:** Implement API call into React.
 * **08:30-09:45:** Work on implementing API data into OpenLayers.
 * **09:45-10:30:** Fix longitude negative sign bug. (I know East from West, really!) 
+* **10:30-11:15:** Finish implementing API data into OpenLayers. Points now render with text.
