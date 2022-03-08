@@ -39,11 +39,12 @@ public abstract class MappableEvent : IScrapeable
   public bool NeedsUpdate()
   {
     TimeSpan timeSinceUpdate = DateTime.Now - LastChecked;
-    return timeSinceUpdate.Days > 3;
+    return timeSinceUpdate.Days > 30;
   }
 
   public float ParseLatOrLongString(string latOrLong)
   {
+    Console.WriteLine(latOrLong);
     string[] workingArray = latOrLong.Split('°');
     float degrees = float.Parse(workingArray[0]);
     float minutes = 0;
@@ -59,7 +60,7 @@ public abstract class MappableEvent : IScrapeable
       seconds = float.Parse(workingArray[0]);
     }
     float value = degrees + (minutes / 60) + (seconds / 3600);
-    return workingArray[1] == "N" || workingArray[1] == "W" ? value : value * -1;
+    return latOrLong.Contains("N") || latOrLong.Contains("E") ? value : value * -1;
   }
 
   public ParseResult ParseDateForYear(string date)
