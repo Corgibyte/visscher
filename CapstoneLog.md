@@ -58,4 +58,6 @@
 
 #### Wednesday, 03/09/2022
 * **08:00-09:30:** Update client structure and features.
-* **09:30-10:15:** Improve client styling.
+* **09:30-10:45:** Improve client styling.
+* **10:45-11:15:** Host client on Azure.
+* **11:15-12:00:** Work on documentation.
