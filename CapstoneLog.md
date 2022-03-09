@@ -53,3 +53,5 @@
 * **09:45-10:30:** Fix longitude negative sign bug. (I know East from West, really!) 
 * **10:30-11:15:** Finish implementing API data into OpenLayers. Points now render with text.
 * **11:15-12:00:** Fix lat/long parsing error.
+* **12:30-15:00:** Try to connect to Azure.
+* **15:30-17:30:** Finally figure out Azure database problems. 
