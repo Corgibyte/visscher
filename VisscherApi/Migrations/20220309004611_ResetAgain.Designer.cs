@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VisscherApi.Models;
@@ -11,15 +12,17 @@ using VisscherApi.Models;
 namespace VisscherApi.Migrations
 {
     [DbContext(typeof(VisscherApiContext))]
-    [Migration("20220227044421_AddBattlesAlphabetical")]
-    partial class AddBattlesAlphabetical
+    [Migration("20220309004611_ResetAgain")]
+    partial class ResetAgain
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.1")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("ProductVersion", "7.0.0-preview.1.22076.6")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("VisscherApi.Models.BattlesAlphabetical", b =>
                 {
@@ -27,14 +30,16 @@ namespace VisscherApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WikiListId"), 1L, 1);
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("LastChecked")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Url")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("WikiListId");
 
@@ -58,6 +63,8 @@ namespace VisscherApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WikiListId"), 1L, 1);
+
                     b.Property<int>("BattlesByDateId")
                         .HasColumnType("int");
 
@@ -65,10 +72,10 @@ namespace VisscherApi.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("LastChecked")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Url")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("WikiListId");
 
@@ -82,6 +89,8 @@ namespace VisscherApi.Migrations
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"), 1L, 1);
 
                     b.HasKey("CategoryId");
 
@@ -100,28 +109,30 @@ namespace VisscherApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EventId"), 1L, 1);
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("LastChecked")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<float>("Latitude")
-                        .HasColumnType("float");
+                        .HasColumnType("real");
 
                     b.Property<float>("Longitude")
-                        .HasColumnType("float");
+                        .HasColumnType("real");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Url")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");
@@ -140,19 +151,6 @@ namespace VisscherApi.Migrations
                     b.HasBaseType("VisscherApi.Models.MappableEvent");
 
                     b.HasDiscriminator().HasValue("Battle");
-
-                    b.HasData(
-                        new
-                        {
-                            EventId = 1,
-                            CategoryId = 1,
-                            LastChecked = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Latitude = 0f,
-                            Longitude = 0f,
-                            Name = "Battle of Ad Decimum",
-                            Url = "https://en.wikipedia.org/wiki/Battle_of_Ad_Decimum",
-                            Year = 0
-                        });
                 });
 
             modelBuilder.Entity("VisscherApi.Models.BattlesAlphabetical", b =>

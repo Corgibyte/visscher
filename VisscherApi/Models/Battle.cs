@@ -61,6 +61,8 @@ public class Battle : MappableEvent
       };
       db.Entry(newBattle).State = EntityState.Modified;
       db.SaveChanges();
+      db.ChangeTracker.Clear();
+      db.SaveChanges();
       return new ParseResult { Result = true, Message = $"{name} parsed" };
     }
     return new ParseResult { Result = false, Message = $"Unable to parse {name}. Lat: {latitude}. Long: {longitude}. Date: {dateParse.Message}." };

@@ -53,14 +53,14 @@ public class BattlesController : ControllerBase
   {
     if (id == 0)
     {
-      BattlesAlphabetical list = await _db.BattlesAlphabetical.FirstOrDefaultAsync(list => list.WikiListId == 1);
-      _httpService.AddToQueue(list);
-      bool inList = _httpService.QueueContains(list);
-      while (inList)
-      {
-        Thread.Sleep(1000);
-        inList = _httpService.QueueContains(list);
-      }
+      // BattlesAlphabetical list = await _db.BattlesAlphabetical.FirstOrDefaultAsync(list => list.WikiListId == 1);
+      // _httpService.AddToQueue(list);
+      // bool inList = _httpService.QueueContains(list);
+      // while (inList)
+      // {
+      //   Thread.Sleep(1000);
+      //   inList = _httpService.QueueContains(list);
+      // }
       foreach (Battle battle in _db.Battles)
       {
         if (battle.NeedsUpdate())

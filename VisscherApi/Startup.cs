@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,7 +30,7 @@ public class Startup
 
     services.AddControllers();
     services.AddDbContext<VisscherApiContext>(opt =>
-        opt.UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])))
+        opt.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")))
       .AddMvc()
       .AddNewtonsoftJson();
     services.AddSwaggerGen(c =>
