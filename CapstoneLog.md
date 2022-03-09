@@ -54,4 +54,7 @@
 * **10:30-11:15:** Finish implementing API data into OpenLayers. Points now render with text.
 * **11:15-12:00:** Fix lat/long parsing error.
 * **12:30-15:00:** Try to connect to Azure.
-* **15:30-17:30:** Finally figure out Azure database problems. 
+* **15:30-17:30:** Finally figure out Azure database problems.
+
+#### Wednesday, 03/09/2022
+* **08:00-09:30:** Update client structure and features.
