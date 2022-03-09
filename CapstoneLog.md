@@ -58,3 +58,4 @@
 
 #### Wednesday, 03/09/2022
 * **08:00-09:30:** Update client structure and features.
+* **09:30-10:15:** Improve client styling.
