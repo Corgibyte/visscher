@@ -71,7 +71,7 @@ public class BattlesController : ControllerBase
     }
     else
     {
-      Battle selectedBattle = _db.Battles.FirstOrDefault(battle => battle.EventId == id);
+      Battle selectedBattle = await _db.Battles.FirstOrDefaultAsync(battle => battle.EventId == id);
       _httpService.AddToQueue(selectedBattle);
     }
     return Ok();
