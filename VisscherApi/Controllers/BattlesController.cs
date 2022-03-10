@@ -44,7 +44,7 @@ public class BattlesController : ControllerBase
     {
       StatusCode = (int)HttpStatusCode.OK,
       ContentType = "applications/json",
-      Content = JsonConvert.SerializeObject(battles, new BattleJsonConverter())
+      Content = JsonConvert.SerializeObject(battles, new MappableEventJsonConverter())
     };
   }
 

@@ -44,7 +44,7 @@ public class EarthquakesController : ControllerBase
     {
       StatusCode = (int)HttpStatusCode.OK,
       ContentType = "applications/json",
-      Content = JsonConvert.SerializeObject(earthquakes, new BattleJsonConverter())
+      Content = JsonConvert.SerializeObject(earthquakes, new MappableEventJsonConverter())
     };
   }
 
