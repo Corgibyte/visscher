@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VisscherApi.Models;
 
@@ -11,9 +12,10 @@ using VisscherApi.Models;
 namespace VisscherApi.Migrations
 {
     [DbContext(typeof(VisscherApiContext))]
-    partial class VisscherApiContextModelSnapshot : ModelSnapshot
+    [Migration("20220310172717_AddEarthquakeMastersList")]
+    partial class AddEarthquakeMastersList
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

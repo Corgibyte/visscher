@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VisscherApi.Models;
 
@@ -11,9 +12,10 @@ using VisscherApi.Models;
 namespace VisscherApi.Migrations
 {
     [DbContext(typeof(VisscherApiContext))]
-    partial class VisscherApiContextModelSnapshot : ModelSnapshot
+    [Migration("20220310163424_AddEarthquakeToContext")]
+    partial class AddEarthquakeToContext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,39 +107,6 @@ namespace VisscherApi.Migrations
                         });
                 });
 
-            modelBuilder.Entity("VisscherApi.Models.EarthquakesMasterList", b =>
-                {
-                    b.Property<int>("WikiListId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WikiListId"), 1L, 1);
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("LastChecked")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Url")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("WikiListId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("EarthquakesMasterList");
-
-                    b.HasData(
-                        new
-                        {
-                            WikiListId = 2,
-                            CategoryId = 2,
-                            LastChecked = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Url = "https://en.wikipedia.org/wiki/Lists_of_earthquakes"
-                        });
-                });
-
             modelBuilder.Entity("VisscherApi.Models.MappableEvent", b =>
                 {
                     b.Property<int>("EventId")
@@ -220,17 +189,6 @@ namespace VisscherApi.Migrations
                 });
 
             modelBuilder.Entity("VisscherApi.Models.BattlesByDate", b =>
-                {
-                    b.HasOne("VisscherApi.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("VisscherApi.Models.EarthquakesMasterList", b =>
                 {
                     b.HasOne("VisscherApi.Models.Category", "Category")
                         .WithMany()

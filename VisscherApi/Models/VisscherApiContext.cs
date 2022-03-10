@@ -9,6 +9,8 @@ public class VisscherApiContext : DbContext
   public DbSet<Category> Categories { get; set; }
   public DbSet<BattlesByDate> BattlesByDateList { get; set; }
   public DbSet<BattlesAlphabetical> BattlesAlphabetical { get; set; }
+  public DbSet<Earthquake> Earthquakes { get; set; }
+  public DbSet<EarthquakesMasterList> EarthquakesMasterList { get; set; }
 
   public VisscherApiContext(DbContextOptions<VisscherApiContext> options) : base(options) { }
 
@@ -19,6 +21,10 @@ public class VisscherApiContext : DbContext
         new Category
         {
           CategoryId = 1
+        },
+        new Category
+        {
+          CategoryId = 2
         }
       );
     builder.Entity<BattlesAlphabetical>()
@@ -28,6 +34,27 @@ public class VisscherApiContext : DbContext
           WikiListId = 1,
           CategoryId = 1,
           Url = "https://en.wikipedia.org/wiki/List_of_battles_(alphabetical)",
+          LastChecked = DateTime.MinValue
+        }
+      );
+    builder.Entity<Earthquake>()
+      .HasData(
+        new Earthquake
+        {
+          Url = "https://en.wikipedia.org/wiki/2000_Enggano_earthquake",
+          Name = "Not parsed",
+          LastChecked = DateTime.MinValue,
+          CategoryId = 2,
+          EventId = 5001
+        }
+      );
+    builder.Entity<EarthquakesMasterList>()
+      .HasData(
+        new EarthquakesMasterList
+        {
+          WikiListId = 2,
+          CategoryId = 2,
+          Url = "https://en.wikipedia.org/wiki/Lists_of_earthquakes",
           LastChecked = DateTime.MinValue
         }
       );
