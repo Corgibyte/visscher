@@ -61,3 +61,5 @@
 * **09:30-10:45:** Improve client styling.
 * **10:45-11:15:** Host client on Azure.
 * **11:15-12:00:** Work on documentation.
+* **13:00-14:00:** Research Wikipedia articles to try to find new source of event.
+* **14:00-17:00:** Attempt to implement vintage-esque map style.
